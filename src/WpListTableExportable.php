@@ -104,7 +104,9 @@ class WpListTableExportable extends \WP_List_Table {
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 		$headers = array();
 		foreach ( $columns as $column_key => $column_display_name ) {
-			if ( in_array( $column_key, $hidden )  || 'cb' === $column_key ) {
+			if ( in_array( $column_key, $hidden ) ||
+				 in_array( $column_key, $this->hidden_columns_csv() ) ||
+				'cb' === $column_key ) {
 				continue;
 			}
 			$headers[] = $column_display_name;
@@ -130,8 +132,10 @@ class WpListTableExportable extends \WP_List_Table {
 	protected function single_row_csv( $item ) {
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 		$row = array();
-		foreach ( array_keys( $columns ) as $column_name ) {
-			if ( in_array( $column_name, $hidden )  || 'cb' === $column_name ) {
+		foreach ( array_keys( $columns ) as $column_key ) {
+			if ( in_array( $column_key, $hidden ) ||
+				 in_array( $column_key, $this->hidden_columns_csv() ) ||
+				 'cb' === $column_key ) {
 				continue;
 			}
 			if ( method_exists( $this, 'column_csv_' . $column_name ) ) {
@@ -189,5 +193,16 @@ class WpListTableExportable extends \WP_List_Table {
 	 */
 	protected function get_export_link() {
 		return add_query_arg( 'wlte_export', 1 );
+	}
+
+	/**
+	 * Columns which should be hidden when outputting to CSV.
+	 *
+	 * Override this in your class if you want specific columns to be hidden
+	 * when outputting to CSV over and above those already hidden in your list table.
+	 * To hide columns return an array of column keys.
+	 */
+	protected function hidden_columns_csv() {
+		return array();
 	}
 }
