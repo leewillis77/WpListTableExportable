@@ -30,9 +30,7 @@ class WpListTableExportable extends \WP_List_Table {
 		array_pop($this->url_path);
 		array_pop($this->url_path);
 		$this->url_path = implode( '/', $this->url_path );
-
 		parent::__construct( $args );
-
 	}
 
 	/**
@@ -65,7 +63,7 @@ class WpListTableExportable extends \WP_List_Table {
 		if ( empty( $_GET['wlte_export'] ) ) {
 			parent::display();
 		} else {
-			// Trash any output sent up until this point.
+			// Throw away any output sent up until this point.
 			ob_end_clean();
 
 			// Output the download headers.
@@ -85,7 +83,7 @@ class WpListTableExportable extends \WP_List_Table {
 	/**
 	 * Output the headers to trigger a download.
 	 */
-	private function csv_headers() {
+	protected function csv_headers() {
 		if ( method_exists( $this, 'csv_filename' ) ) {
 			$filename = call_user_func( array( $this, 'csv_filename' ) );
 		} else {
@@ -98,7 +96,7 @@ class WpListTableExportable extends \WP_List_Table {
 	/**
 	 * Output the CSV header row.
 	 */
-	private function print_column_headers_csv() {
+	protected function print_column_headers_csv() {
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 		$headers = array();
 		foreach ( $columns as $column_key => $column_display_name ) {
@@ -113,7 +111,7 @@ class WpListTableExportable extends \WP_List_Table {
 	/**
 	 * Output the data as CSV rows.
 	 */
-	private function display_rows_csv() {
+	protected function display_rows_csv() {
 		if ( ! $this->has_items() ) {
 			return;
 		}
@@ -125,7 +123,7 @@ class WpListTableExportable extends \WP_List_Table {
 	/**
 	 * Output a single row as CSV.
 	 */
-	private function single_row_csv( $item ) {
+	protected function single_row_csv( $item ) {
 		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
 		$row = array();
 		foreach ( array_keys( $columns ) as $column_name ) {
@@ -163,7 +161,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * NOTE: This isn't about escaping, but it tidies up a string that was originally targetted at
 	 * HTML output, and tries to make it CSV friendly.
 	 */
-	private function clean( $string ) {
+	protected function clean( $string ) {
 		// Replace <br> with a space.
 		$string = preg_replace( '#<br\s*/?>#i', ' ', $string );
 		// Strip all other tags.
@@ -176,7 +174,7 @@ class WpListTableExportable extends \WP_List_Table {
 	/**
 	 * Output an array using fputcsv to standard output.
 	 */
-	private function put_csv( $data ) {
+	protected function put_csv( $data ) {
 		$out = fopen('php://output', 'w');
 		fputcsv( $out, $data );
 		fclose( $out );
