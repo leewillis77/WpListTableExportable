@@ -3,6 +3,8 @@
 ## What?
 WP_List_Table_Exportable is an (almost) drop-in replacement for the WP_List_Table class that lets users export the current page of data to CSV with a simple click. 
 
+[![Alt text for your video](/assets/demo-shot.png)](https://www.youtube.com/watch?v=dFUGJP7Mpnc)
+
 ### Export link included in list table
 ![Screenshot of export link][/assets/screenshot-1.png?raw=true]
 
