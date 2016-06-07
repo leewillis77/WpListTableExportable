@@ -138,25 +138,25 @@ class WpListTableExportable extends \WP_List_Table {
 				 'cb' === $column_key ) {
 				continue;
 			}
-			if ( method_exists( $this, 'column_csv_' . $column_name ) ) {
-				$row[] = call_user_func( array( $this, 'column_csv_' . $column_name ), $item );
-			} elseif ( method_exists( $this, '_column_' . $column_name ) ) {
+			if ( method_exists( $this, 'column_csv_' . $column_key ) ) {
+				$row[] = call_user_func( array( $this, 'column_csv_' . $column_key ), $item );
+			} elseif ( method_exists( $this, '_column_' . $column_key ) ) {
 				$row[] = $this->clean(
 					call_user_func(
-						array( $this, '_column_' . $column_name ),
+						array( $this, '_column_' . $column_key ),
 						$item,
 						'',
 						'',
 						$primary
 					)
 				);
-			} elseif ( method_exists( $this, 'column_' . $column_name ) ) {
+			} elseif ( method_exists( $this, 'column_' . $column_key ) ) {
 				$row[] = $this->clean(
-					call_user_func( array( $this, 'column_' . $column_name ), $item )
+					call_user_func( array( $this, 'column_' . $column_key ), $item )
 				);
 			} else {
 				$row[] = $this->clean(
-					$this->column_default( $item, $column_name )
+					$this->column_default( $item, $column_key )
 				);
 			}
 		}
