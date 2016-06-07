@@ -33,8 +33,6 @@ class WpListTableExportable extends \WP_List_Table {
 
 		parent::__construct( $args );
 
-		// FIXME : How do we handle localisation?
-		// (given we're not sure when we'll be instantiated?)
 	}
 
 	/**
