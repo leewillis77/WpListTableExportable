@@ -175,7 +175,7 @@ class WpListTableExportable extends \WP_List_Table {
 		// Strip all other tags.
 		$string = strip_tags( $string );
 		// Decode any HTML entitites.
-		$string = html_entity_decode( $string, ENT_QUOTES, 'UTF-8' );
+		$string = html_entity_decode( $string, ENT_COMPAT, 'UTF-8' );
 		return $string;
 	}
 
