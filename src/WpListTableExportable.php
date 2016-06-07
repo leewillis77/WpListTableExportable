@@ -24,12 +24,13 @@ class WpListTableExportable extends \WP_List_Table {
 		$this->templates = new TemplateLoader();
 
 		// Work out the URL to the class assets.
-		$this->url_path = plugin_dir_url(__FILE__);
-		$this->url_path = explode( '/', $this->url_path );
+		$this->url_path = plugin_dir_url( __FILE__ );
 		// Drop the src/ off the end
-		array_pop($this->url_path);
-		array_pop($this->url_path);
+		$this->url_path = explode( '/', $this->url_path );
+		array_pop( $this->url_path );
+		array_pop( $this->url_path );
 		$this->url_path = implode( '/', $this->url_path );
+
 		parent::__construct( $args );
 	}
 
@@ -61,7 +62,12 @@ class WpListTableExportable extends \WP_List_Table {
 	public function display() {
 
 		// Add our stylesheet to style the export button.
-		wp_enqueue_style( 'wlte-admin', $this->url_path . '/css/wlte-admin.css', array(), self::WLTE_VERSION );
+		wp_enqueue_style(
+			'wlte-admin',
+			$this->url_path . '/css/wlte-admin.css',
+			array(),
+			self::WLTE_VERSION
+		);
 
 		// If it's an online display, render as normal.
 		if ( empty( $_GET['wlte_export'] ) ) {
@@ -91,17 +97,17 @@ class WpListTableExportable extends \WP_List_Table {
 		if ( method_exists( $this, 'csv_filename' ) ) {
 			$filename = call_user_func( array( $this, 'csv_filename' ) );
 		} else {
-			$filename = 'download-' . date('Y-m-d H:i:s') . '.csv';
+			$filename = 'download-' . date( 'Y-m-d H:i:s' ) . '.csv';
 		}
-		header('Content-Type: text/csv; charset=utf-8');
-		header('Content-Disposition: attachment; filename="' . $filename . '"');
+		header( 'Content-Type: text/csv; charset=utf-8' );
+		header( 'Content-Disposition: attachment; filename="' . $filename . '"' );
 	}
 
 	/**
 	 * Output the CSV header row.
 	 */
 	protected function print_column_headers_csv() {
-		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
+		list( $columns, $hidden, , ) = $this->get_column_info();
 		$headers = array();
 		foreach ( $columns as $column_key => $column_display_name ) {
 			if ( in_array( $column_key, $hidden ) ||
@@ -130,7 +136,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * Output a single row as CSV.
 	 */
 	protected function single_row_csv( $item ) {
-		list( $columns, $hidden, $sortable, $primary ) = $this->get_column_info();
+		list( $columns, $hidden, , $primary ) = $this->get_column_info();
 		$row = array();
 		foreach ( array_keys( $columns ) as $column_key ) {
 			if ( in_array( $column_key, $hidden ) ||
@@ -183,7 +189,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * Output an array using fputcsv to standard output.
 	 */
 	protected function put_csv( $data ) {
-		$out = fopen('php://output', 'w');
+		$out = fopen( 'php://output', 'w' );
 		fputcsv( $out, $data );
 		fclose( $out );
 	}
