@@ -34,19 +34,19 @@ If you want to use the class, here's what you can do.
         }
     ],
     "require": {
-        "leewillis77/WpListTableExportable": "dev-develop"
+        "leewillis77/WpListTableExportable": "dev-master"
     }
 }
 ```
 
-* Extend WP_List_Table_Exportable instead of WP_List_Table
-* Your plugin will need to also require bootstrap.php on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
+* Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
+* Your plugin will need to also require ```bootstrap.php``` on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
 
 ### Option 2 - manual download
 
 * Download, or clone this repo within your plugin
 * Include the main class file before you declare your list table class
-* Extend WP_List_Table_Exportable instead of WP_List_Table
+* Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
 * Your plugin will need to also require bootstrap.php on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
 
 ## Customising&hellip;
