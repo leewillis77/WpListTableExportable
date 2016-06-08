@@ -7,11 +7,11 @@ WP_List_Table_Exportable is an (almost) drop-in replacement for the WP_List_Tabl
 
 ### Export link included in list table
 
-![Screenshot of export link][/assets/screenshot-1.png?raw=true]
+![Screenshot of export link](/assets/screenshot-1.png?raw=true)
 
 ### CSV Output compatible with your favourite spreadsheet app
 
-![Screenshot of resulting CSV file][/assets/screenshot-2.png?raw=true]
+![Screenshot of resulting CSV file](/assets/screenshot-2.png?raw=true)
 
 ## Why&hellip;
 I wanted to add CSV Export functionality to an existing WP_List_Table implementation in the [Cart Recovery for WordPress Pro](https://wp-cart-recovery.com/downloads/cart-recovery-wordpress-pro/) plugin.
