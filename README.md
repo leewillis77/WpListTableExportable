@@ -6,9 +6,11 @@ WP_List_Table_Exportable is an (almost) drop-in replacement for the WP_List_Tabl
 [![Alt text for your video](/assets/demo-shot.png)](https://www.youtube.com/watch?v=dFUGJP7Mpnc)
 
 ### Export link included in list table
+
 ![Screenshot of export link][/assets/screenshot-1.png?raw=true]
 
 ### CSV Output compatible with your favourite spreadsheet app
+
 ![Screenshot of resulting CSV file][/assets/screenshot-2.png?raw=true]
 
 ## Why&hellip;
