@@ -43,7 +43,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 */
 	protected function display_tablenav( $which ) {
 		parent::display_tablenav( $which );
-		$this->templates->echo(
+		$this->templates->output(
 			'html',
 			'export-link',
 			array(
