@@ -42,7 +42,19 @@ class WpListTableExportable extends \WP_List_Table {
 	 * @param  string $which Whether we're generating the "top" or "bottom" tablenav.
 	 */
 	protected function display_tablenav( $which ) {
-		parent::display_tablenav( $which );
+		if ( 'top' === $which ) {
+			wp_nonce_field( 'bulk-' . $this->_args['plural'] );
+		}
+		?>
+		<div class="tablenav <?php echo esc_attr( $which ); ?>">
+
+			<?php if ( $this->has_items() ): ?>
+			<div class="alignleft actions bulkactions">
+				<?php $this->bulk_actions( $which ); ?>
+			</div>
+		<?php endif;
+		$this->extra_tablenav( $which );
+		$this->pagination( $which );
 		$this->templates->output(
 			'html',
 			'export-link',
@@ -54,6 +66,10 @@ class WpListTableExportable extends \WP_List_Table {
 				),
 			)
 		);
+		?>
+		<br class="clear" />
+	</div>
+	<?php
 	}
 
 	/**
