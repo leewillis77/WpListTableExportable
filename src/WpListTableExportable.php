@@ -7,8 +7,8 @@ use leewillis77\WpListTableExportable\TemplateLoader;
 class WpListTableExportable extends \WP_List_Table {
 
 	protected $templates;
-
 	protected $url_path;
+	protected $export_button_text;
 
 	const WLTE_VERSION = '0.1';
 
@@ -22,6 +22,9 @@ class WpListTableExportable extends \WP_List_Table {
 	public function __construct( $args = array() ) {
 		// Create a template loader instance.
 		$this->templates = new TemplateLoader();
+
+		// Set the default export button text.
+		$this->export_button_text = __( 'Export this page', 'wlte' );
 
 		// Work out the URL to the class assets.
 		$this->url_path = plugin_dir_url( __FILE__ );
@@ -62,7 +65,7 @@ class WpListTableExportable extends \WP_List_Table {
 				'export_link' => $this->get_export_link(),
 				'export_text' => apply_filters(
 					'wlte_export_text',
-					__( 'Export this page', 'wlte' )
+					$this->export_button_text
 				),
 			)
 		);
