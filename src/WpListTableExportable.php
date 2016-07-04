@@ -129,8 +129,7 @@ class WpListTableExportable extends \WP_List_Table {
 		list( $columns, $hidden, , ) = $this->get_column_info();
 		$headers = array();
 		foreach ( $columns as $column_key => $column_display_name ) {
-			if ( in_array( $column_key, $hidden ) ||
-				 in_array( $column_key, $this->hidden_columns_csv() ) ||
+			if ( in_array( $column_key, $this->hidden_columns_csv() ) ||
 				'cb' === $column_key ) {
 				continue;
 			}
@@ -158,8 +157,7 @@ class WpListTableExportable extends \WP_List_Table {
 		list( $columns, $hidden, , $primary ) = $this->get_column_info();
 		$row = array();
 		foreach ( array_keys( $columns ) as $column_key ) {
-			if ( in_array( $column_key, $hidden ) ||
-				 in_array( $column_key, $this->hidden_columns_csv() ) ||
+			if ( in_array( $column_key, $this->hidden_columns_csv() ) ||
 				 'cb' === $column_key ) {
 				continue;
 			}
