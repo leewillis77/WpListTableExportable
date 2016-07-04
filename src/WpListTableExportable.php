@@ -126,7 +126,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * Output the CSV header row.
 	 */
 	protected function print_column_headers_csv() {
-		list( $columns, $hidden, , ) = $this->get_column_info();
+		list( $columns, , , ) = $this->get_column_info();
 		$headers = array();
 		foreach ( $columns as $column_key => $column_display_name ) {
 			if ( in_array( $column_key, $this->hidden_columns_csv() ) ||
@@ -154,7 +154,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * Output a single row as CSV.
 	 */
 	protected function single_row_csv( $item ) {
-		list( $columns, $hidden, , $primary ) = $this->get_column_info();
+		list( $columns, , , $primary ) = $this->get_column_info();
 		$row = array();
 		foreach ( array_keys( $columns ) as $column_key ) {
 			if ( in_array( $column_key, $this->hidden_columns_csv() ) ||
@@ -226,6 +226,7 @@ class WpListTableExportable extends \WP_List_Table {
 	 * To hide columns return an array of column keys.
 	 */
 	protected function hidden_columns_csv() {
-		return array();
+		list( , $hidden, , ) = $this->get_column_info();
+		return $hidden;
 	}
 }
