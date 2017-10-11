@@ -50,12 +50,12 @@ class WpListTableExportable extends \WP_List_Table {
 		}
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
+			<?php if ( 'top' === $which ) : ?>
+                <div class="alignleft">
+					<?php $this->views(); ?>
+                </div>
+			<?php endif; ?>
 			<?php if ( $this->has_items() ): ?>
-				<?php if ( 'top' === $which ) : ?>
-                    <div class="alignleft">
-						<?php $this->views(); ?>
-                    </div>
-				<?php endif; ?>
                 <div class="alignleft actions bulkactions">
 					<?php $this->bulk_actions( $which ); ?>
                 </div>
