@@ -50,28 +50,32 @@ class WpListTableExportable extends \WP_List_Table {
 		}
 		?>
 		<div class="tablenav <?php echo esc_attr( $which ); ?>">
-
 			<?php if ( $this->has_items() ): ?>
-			<div class="alignleft actions bulkactions">
-				<?php $this->bulk_actions( $which ); ?>
-			</div>
-		<?php endif;
-		$this->extra_tablenav( $which );
-		$this->pagination( $which );
-		$this->templates->output(
-			'html',
-			'export-link',
-			array(
-				'export_link' => $this->get_export_link(),
-				'export_text' => apply_filters(
-					'wlte_export_text',
-					$this->export_button_text
-				),
-			)
-		);
-		?>
-		<br class="clear" />
-	</div>
+				<?php if ( 'top' === $which ) : ?>
+                    <div class="alignleft">
+						<?php $this->views(); ?>
+                    </div>
+				<?php endif; ?>
+                <div class="alignleft actions bulkactions">
+					<?php $this->bulk_actions( $which ); ?>
+                </div>
+			<?php endif;
+			$this->extra_tablenav( $which );
+			$this->pagination( $which );
+			$this->templates->output(
+				'html',
+				'export-link',
+				array(
+					'export_link' => $this->get_export_link(),
+					'export_text' => apply_filters(
+						'wlte_export_text',
+						$this->export_button_text
+					),
+				)
+			);
+			?>
+            <br class="clear" />
+        </div>
 	<?php
 	}
 
