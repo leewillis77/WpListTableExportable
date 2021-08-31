@@ -1,11 +1,11 @@
 # WP_List_Table_Exportable
 
-## What?
+## What?
 WP_List_Table_Exportable is an (almost) drop-in replacement for the WP_List_Table class that lets users export the current page of data to CSV with a simple click. 
 
 [![Alt text for your video](/assets/demo-shot.png)](https://www.youtube.com/watch?v=dFUGJP7Mpnc)
 
-### Export link included in list table
+### Export link included in list table
 
 ![Screenshot of export link](/assets/screenshot-1.png?raw=true)
 
@@ -13,7 +13,8 @@ WP_List_Table_Exportable is an (almost) drop-in replacement for the WP_List_Tabl
 
 ![Screenshot of resulting CSV file](/assets/screenshot-2.png?raw=true)
 
-## Why&hellip;
+
+## Why&hellip;
 
 I wanted to add CSV Export functionality to an existing WP_List_Table implementation in the [Cart Recovery for WordPress Pro](https://wp-cart-recovery.com/downloads/cart-recovery-wordpress-pro/) plugin.
 
@@ -43,14 +44,14 @@ If you want to use the class, here's what you can do.
 * Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
 * Your plugin will need to also require ```bootstrap.php``` on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
 
-### Option 2 - manual download
+### Option 2 - manual download
 
 * Download, or clone this repo within your plugin
 * Include the main class file before you declare your list table class
 * Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
 * Your plugin will need to also require bootstrap.php on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
 
-## Customising&hellip;
+## Customising&hellip;
 
 By default, the CSV file will strip any HTML tags from the cell contents, and decode HTML attributes before outputting the contents to the CSV file. Sometimes you may want an alternative representation of a cell. To do that you can implement a ```column_csv_{column_id}``` callback in your extending class. This will override the standard column_{column_id} callback when the data is being output to CSV - HTML layout will be unaffected and will use the original callback. 
 
