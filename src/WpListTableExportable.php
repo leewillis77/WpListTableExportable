@@ -1,6 +1,6 @@
 <?php
 
-namespace leewillis77\WPListTableExportable;
+namespace leewillis77\WpListTableExportable;
 
 use leewillis77\WpListTableExportable\TemplateLoader;
 
