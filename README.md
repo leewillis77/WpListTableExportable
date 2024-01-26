@@ -42,7 +42,7 @@ If you want to use the class, here's what you can do.
 ```
 
 * Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
-* Your plugin will need to also require ```bootstrap.php``` on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
+* Your plugin will need to invoke ```leewillis77\WpListTableExportable\Bootstrap``` on any request that would result in the list table being shown *as early as practical* in the request lifecycle - before any output is created
 
 ### Option 2 - manual download
 
