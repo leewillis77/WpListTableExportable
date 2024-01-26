@@ -15,15 +15,15 @@ class Bootstrap {
 	public function __invoke() {
 		add_action( 'init', 'wlte_init' );
 	
-		if ( ! defined( 'WLTE_BUFFERING_ACTIVE' ) && !empty( $_GET['wlte_export'] ) ) {
+		if ( ! defined( 'WLTE_BUFFERING_ACTIVE' ) && ! empty( $_GET['wlte_export'] ) ) {
 			ob_start();
 			define( 'WLTE_BUFFERING_ACTIVE', true );
-		}		
+		}
 	}
 
 	public function wlte_init() {
 		$locale = apply_filters( 'plugin_locale', get_locale(), 'wlte' );
-		load_textdomain( 'wlte', WP_LANG_DIR.'/wp-list-table-exportable/wlte-' . $locale . '.mo' );
+		load_textdomain( 'wlte', WP_LANG_DIR . '/wp-list-table-exportable/wlte-' . $locale . '.mo' );
 		load_plugin_textdomain( 'wlte', false, basename( dirname( __FILE__ ) ) . '/languages/' );
 	}
 }
