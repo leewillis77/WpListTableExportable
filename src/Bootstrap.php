@@ -13,8 +13,8 @@ namespace leewillis77\WpListTableExportable;
 class Bootstrap {
 
 	public function __invoke() {
-		add_action( 'init', 'wlte_init' );
-	
+		add_action( 'init', [ $this, 'wlte_init' ] );
+
 		if ( ! defined( 'WLTE_BUFFERING_ACTIVE' ) && ! empty( $_GET['wlte_export'] ) ) {
 			ob_start();
 			define( 'WLTE_BUFFERING_ACTIVE', true );
