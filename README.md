@@ -27,18 +27,8 @@ If you want to use the class, here's what you can do.
 
 * Add the repo as a dependency:
 
-```json
-{
-	"repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/leewillis77/WpListTableExportable"
-        }
-    ],
-    "require": {
-        "leewillis77/WpListTableExportable": "dev-master"
-    }
-}
+```bash
+$ composer require leewillis77/wplisttableexportable
 ```
 
 * Extend ```leewillis77\WpListTableExportable\WpListTableExportable``` instead of ```WP_List_Table```
