@@ -4,5 +4,8 @@
         "psr-4": {
             "leewillis77\\WpListTableExportable\\": "src/"
         }
-    }
+    },
+    "license": [
+        "GPL-2.0-only"
+    ]
 }
